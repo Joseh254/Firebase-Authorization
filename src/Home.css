@@ -1,0 +1,13 @@
+.signInForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.form input{
+    padding: 1rem;
+    width: 40rem;
+    color:white:
+}
