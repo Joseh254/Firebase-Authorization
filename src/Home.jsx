@@ -31,7 +31,8 @@ function Home() {
             try {
                 await doSignInWithGoogle();
             } catch (error) {
-                setErrorMessage(error.message);
+                setErrorMessage("An error has Occured..please try refleshing the page");
+                console.log(error.message);
                 setIsSignedIn(false);
             }
         }
@@ -39,7 +40,9 @@ function Home() {
 
     return (
         <div className='form'>
+            
             CREATE AN ACCOUNT
+
             <form className='signInForm' onSubmit={onSubmit}>
                 <input
                     type="text"
@@ -70,7 +73,7 @@ function Home() {
                 </button>
             </form>
     
-            <p>Don't have an account? <Link to="/register">Register</Link></p>
+            <p>have  an account? <Link to="/register">Log in</Link></p>
             <button
                 disabled={isSignedIn}
                 onClick={onGoogleSignIn}
