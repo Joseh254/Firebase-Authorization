@@ -1,34 +1,25 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, updatePassword } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+} from "firebase/auth";
 import { Auth } from "./firebase";
-import { GoogleAuthProvider } from "firebase/auth/web-extension";
-export const doCreateWithEmailAndPassword = async(email,password)=>{
-    return createUserWithEmailAndPassword
+
+export const doCreateWithEmailAndPassword = (email, password) => {
+    return createUserWithEmailAndPassword(Auth, email, password);
 };
 
-export const doSignInWithEmailAndPAssword = (email, password)=>{
-    return signInWithEmailAndPassword(Auth,email,password)
+export const doSignInWithEmailAndPassword = (email, password) => {
+    return signInWithEmailAndPassword(Auth, email, password);
 };
 
-export const doSignInwithGoogle = async ()=>{
+export const doSignInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
-    const result = await signInWithpopup (Auth,provider);
-    return result;
+    return signInWithPopup(Auth, provider);
 };
 
-export const doSignOut = ()=>{
-    return Auth.signOut();
+export const doSignOut = () => {
+    return signOut(Auth);
 };
-
-// export const doPasswordReset = (email)=>{
-//     return sendPasswordResetEmail(Auth, email);
-// };
-
-// export const doPasswordChange = (password)=>{
-//     return updatePassword(Auth.currentUser,password);
-// };
-
-// export const doSendEmailVerification =  ()=>{
-//     return sendEmailVerification(Auth.currentUser,{
-//         url: `${window.location.origin}/home`,
-//     });
-// };
