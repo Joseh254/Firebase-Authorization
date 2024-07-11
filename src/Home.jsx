@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../firebase/auth';
 import { UseAuth } from '../firebase/contexts/context/Auth';
+import { FcGoogle } from "react-icons/fc";
 import './Home.css';
 
 function Home() {
@@ -18,7 +19,8 @@ function Home() {
             try {
                 await doSignInWithEmailAndPassword(email, password);
             } catch (error) {
-                setErrorMessage(error.message);
+                setErrorMessage("An error occured");
+                console.log(error.message);
                 setIsSignedIn(false);
             }
         }
@@ -41,9 +43,10 @@ function Home() {
     return (
         <div className='form'>
             
-            CREATE AN ACCOUNT
+           
 
             <form className='signInForm' onSubmit={onSubmit}>
+            CREATE AN ACCOUNT
                 <input
                     type="text"
                     placeholder='Full Name'
@@ -68,20 +71,25 @@ function Home() {
                 <button
                     type='submit'
                     disabled={isSignedIn}
+                    className='submit'
                 >
                     {isSignedIn ? 'Signing in...' : 'Sign in'}
                 </button>
-            </form>
-    
-            <p>have  an account? <Link to="/register">Log in</Link></p>
+                <p>Already a member? <Link to="/register">Log in</Link></p>
             <button
                 disabled={isSignedIn}
                 onClick={onGoogleSignIn}
+                className='google'
+                
             >
-                Sign in with Google
+               <FcGoogle/>  Sign in with Google
+                
             </button>
 
             {errorMessage && <p className="error">{errorMessage}</p>}
+            </form>
+    
+
         </div>
     );
 }

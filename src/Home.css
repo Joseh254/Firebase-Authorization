@@ -4,10 +4,25 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    background-color: beige;
+    padding: 1rem;
+    
 }
 
 .form input{
     padding: 1rem;
     width: 40rem;
     color:white;
+}
+.google{
+    padding: 1rem;
+}
+.submit{
+    padding: .7rem;
+   border-radius: 25px;
+   width: 15rem;
+   color: white;
+   background-color: black;
+   font-weight: 400;
+   font-size: 1rem;
 }
