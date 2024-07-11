@@ -20,13 +20,16 @@ export function AuthProvider({ children }) {
 
     const initializeUser = (user) => {
         if (user) {
+           
             setCurrentUser(user);
             setUserIsLoggedIn(true);
+
         } else {
             setCurrentUser(null);
             setUserIsLoggedIn(false);
         }
         setLoading(false);
+        console.log(user);
     };
 
     const value = {
